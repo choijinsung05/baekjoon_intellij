@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class q10816 {
+public class q10816 {//해결 못함 이분탐색? 동일한 숫자 어떻게 판단할 것인가
     public static void main(String args[])throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
