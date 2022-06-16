@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Queue;
 import java.util.StringTokenizer;
 public class q1260 {
-    static int N;
-    static int M;
-    static int V;
+    static int N;//정점
+    static int M;//간선
+    static int V;//시작정점
     static List<Integer>[] line;
     static int index = 0;
     static int[] visited = new int[1001];
