@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class q15649 {
+public class q15651 {
 
     public static int n,m;
     public static int [] arr;
@@ -35,12 +35,8 @@ public class q15649 {
             return;
         }
         for(int i=1;i<=n;i++){
-            if(!visit[i]){
-                visit[i] = true;
-                arr[loc] = i;
-                dfs(loc+1);
-                visit[i] = false;
-            }
+            arr[loc] = i;
+            dfs(loc+1);
         }
     }
 }
