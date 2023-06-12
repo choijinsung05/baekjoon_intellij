@@ -56,5 +56,6 @@ public class q1406 {
             sb.append(right.pop());
         }
         System.out.println(sb);
+
     }
 }
