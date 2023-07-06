@@ -1,81 +1,111 @@
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.stream.IntStream;
+
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class sample {
-    static int n,m,k;
-    static int [] arr;
-    static boolean [] visited;
-    static Integer [] B;
-    static int answer;
     public static void main(String[] args) {
-        int [] A = {1,2,3,4,5};
-        int K = 3;
-        n = A.length;
-        m = 2;
-        k = K;
-        visited = new boolean[n+1];
-        arr = new int[m];
-        B = Arrays.stream(A).boxed().toArray(Integer[]::new);
-        Arrays.sort(B, Collections.reverseOrder());
-        permutation(0);
+        int [] fruits = {-2,5,-3,6,8,-1,-5,3};
+        int [] dp = new int[fruits.length];
+
+        dp[0] = fruits[0];
+        int answer = dp[0];
+        for (int i = 1; i <dp.length; i++) {
+            dp[i] = Math.max(0,dp[i-1])+fruits[i];
+            answer = Math.max(answer,dp[i]);
+        }
         System.out.println(answer);
-    }
-    static void permutation(int cnt) {
-        if (cnt == m) {
-            if(--k == 0) {
-                int num = 1;
-                for (int i = arr.length-1; i >= 0; i--) {
-                    answer += arr[i] * num;
-                    num *= 10;
-                }
-            }
-            return;
-        }
-        for (int i=0;i<B.length;i++) {
-            if (!visited[i]) {
-                visited[i] = true;
-                arr[cnt] = B[i];
-                permutation(cnt + 1);
-                visited[i] = false;
-            }
-        }
+
+        ArrayList arrayList = new ArrayList();
+
     }
 }
-/*
-        int N = 25;
-        int K = 2;
 
-        int answer = IntStream.range(1, N+1)
-                .mapToLong(i -> Stream.of(String.valueOf(i).split(""))
-                        .mapToInt(Integer::parseInt)
-                        .filter(num -> num == K).count())
-                .mapToInt(count -> (int) count).sum();
+/*
+    int [] arr = {10,1,5};
+    int n = 5;
+    int index = 0;
+    int answer = 0;
+        Arrays.sort(arr);
+                while (index< arr.length && answer<=n){
+        if(arr[index] <= n){
+        answer = arr[index];
+        }else {
+        break;
+        }
+        index++;
+        }
+        System.out.println(answer);*/
+/*
+int [] arr ={2,6,10};
+        int n = 6;
+        int index = 0;
+        int answer = -1;
+
+        Arrays.sort(arr);
+        while (index <arr.length){
+            if(arr[index] >= n){
+                answer = arr[index];
+                break;
+            }
+            index++;
+        }
         System.out.println(answer);
-*/
+
+* */
+
+/*
+int [] people = {45,50,51,49,90,70};
+        int limit = 100;
+        int answer = 0;
+        Arrays.sort(people);
+        int left = 0;
+        int right = people.length-1;
+        while(left<=right){
+            if(people[left]+people[right] <= limit){
+                answer++;
+                left++;
+                right--;
+            }else{
+                answer++;
+                right--;
+            }
+        }
+        System.out.println(answer);
+ */
 
 /*
 int [] A = {1,2,3,4,5};
-
-        Integer[] B = Arrays.stream(A).boxed().toArray(Integer[]::new);
-        Arrays.sort(B, Collections.reverseOrder());
-
-        for (int num : A){
-            System.out.print(num+" ");
+        int answer = 0;
+        Arrays.sort(A);
+        int mid = A.length/2;
+        int [] left = Arrays.copyOfRange(A, 0, mid);
+        int [] right = Arrays.copyOfRange(A, mid, A.length);
+        int index_l = left.length-1;
+        int index_r = 0;
+        for (int i = 1; i <= A.length; i++) {
+            if(i%2 ==1){
+                answer += right[index_r]*i;
+                index_r++;
+            }else{
+                answer -= left[index_l]*i;
+                index_l--;
+            }
         }
-*/
+        System.out.println(answer);
+* */
 
 /*
-        String S1 = "HelloWorld";
-        String S2 = "WorldHello";
-
-        S1 += S1;
-        System.out.println(S1.contains(S2));
-*/
-
-//    String [] array = {"n","nav","nev"};
-//    String s = "naver";
-//
-//    long count = Arrays.stream(array).filter(string -> s.startsWith(string)).count();
-//        System.out.println(count);
+int A = 12345;
+        int [] money = {50_000,10_000,5_000,1_000,500,100,50,10,5,1};
+        int answer = 0;
+        for (int i = 0; i < money.length; i++) {
+            if(A >= money[i]){
+                int q = A/money[i];
+                answer += q;
+                A %= money[i];
+            }
+        }
+        System.out.println(answer);
+ */
